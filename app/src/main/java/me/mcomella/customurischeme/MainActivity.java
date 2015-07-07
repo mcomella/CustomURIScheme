@@ -1,9 +1,12 @@
 package me.mcomella.customurischeme;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +15,19 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final TextView text = ((TextView) findViewById(R.id.text));
+
+
+        final Intent intent = getIntent();
+        if (intent != null) {
+            String data = intent.getDataString();
+            if (TextUtils.isEmpty(data)) {
+                data = "Data is empty.";
+            }
+
+            text.setText(data);
+        }
     }
 
     @Override
